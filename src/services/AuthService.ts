@@ -15,5 +15,7 @@ export const signupService = async(payload: UserInterface) => {
 
     const savedUser = await user.save()
 
+    // send email
+
     return savedUser
 }

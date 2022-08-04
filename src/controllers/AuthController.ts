@@ -1,14 +1,9 @@
 import { Request, Response } from 'express'
-import bcrypt from 'bcrypt'
-
+import { successHandler } from '../helpers/successHandler'
 
 import { signupService } from '../services/AuthService'
 
 export const signup = async(req:Request, res:Response)=>{
     const data = await signupService(req.body)
-
-    return res.json({
-        status: 200,
-        data
-    })
+    return successHandler('Registration Successful', 200, data)(req, res)
 }
