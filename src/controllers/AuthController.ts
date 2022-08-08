@@ -1,9 +1,16 @@
 import { Request, Response } from 'express'
 import { successHandler } from '../helpers/successHandler'
 
-import { signupService } from '../services/AuthService'
+import { signup, login } from '../services/AuthService'
 
-export const signup = async(req:Request, res:Response)=>{
-    const data = await signupService(req.body)
+export const signupUser = async(req:Request, res:Response)=>{
+    // add validation
+    const data = await signup(req.body)
     return successHandler('Registration Successful', 200, data)(req, res)
+}
+
+export const loginUser = async(req:Request, res:Response)=>{
+    // add validation
+    const data = await login(req.body)
+    return successHandler('Login Successful', 200, data)(req, res)
 }
