@@ -25,3 +25,20 @@ export const fetch = async(budgetId: string) => {
     isNull(budget, 'Budget not found')
     return budget
 }
+
+export const update = async(budgetId:string, payload:BudgetInterface) => {
+    const budget = await Budget.findByIdAndUpdate(budgetId, payload)
+    return budget
+}
+
+export const deleteABudget = async(budgetId:string) => {
+    const budget = await Budget.findById(budgetId)
+    
+    if(budget == null){
+        return 'Budget not found'
+    }
+
+    budget.isDeleted = true
+    await budget.save()
+    return true
+}
