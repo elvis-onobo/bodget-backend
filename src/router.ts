@@ -22,4 +22,3 @@ router.get('/list-budget-items', authMiddleware, listBudgetItems)
 router.get('/fetch-budget-item', authMiddleware, fetchBudgetItems)
 router.put('/update-budget-item', authMiddleware, updateBudgetItems)
 router.delete('/delete-budget-item', authMiddleware, deleteABudgetItem)
-
